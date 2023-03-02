@@ -1,5 +1,6 @@
 package com.epam.mjc.stage0;
 
+
 /**
  * Here are the tasks for working with the arrays.
  * <p>
@@ -11,6 +12,7 @@ public class ArrayTasks {
      * Return a String[] array that will list all the seasons of the year, starting with winter.
      */
     public String[] seasonsArray() {
+        return new String[]{"winter", "spring", "summer", "autumn"};
 
     }
 
@@ -26,6 +28,14 @@ public class ArrayTasks {
      */
     public int[] generateNumbers(int length) {
 
+        int[] numbers = new int[length];
+        if (length > 0) {
+            for(int i = 1; i <= length; i++)
+                numbers[i-1] = i;
+            return numbers;
+        }
+        return numbers;
+
     }
 
     /**
@@ -37,6 +47,10 @@ public class ArrayTasks {
      * arr = [5, -3, -4] -> sum = -2
      */
     public int totalSum(int[] arr) {
+        int sum = 0;
+        for(int num: arr)
+            sum+=num;
+        return sum;
 
     }
 
@@ -51,6 +65,12 @@ public class ArrayTasks {
      */
     public int findIndexOfNumber(int[] arr, int number) {
 
+        for(int i= 0; i < arr.length; i++ )
+            if (number == arr[i])
+                return i;
+
+        return -1;
+
     }
 
     /**
@@ -64,6 +84,11 @@ public class ArrayTasks {
      */
     public String[] reverseArray(String[] arr) {
 
+        String[] reversed = new String[arr.length];
+        for(int i = arr.length-1, j = 0; i >= 0; i--, j++)
+            reversed[j] = arr[i];
+
+        return reversed;
     }
 
     /**
@@ -79,6 +104,16 @@ public class ArrayTasks {
      */
     public int[] getOnlyPositiveNumbers(int[] arr) {
 
+        int positAmount = 0;
+        for(int num: arr)
+            if (num > 0)
+                positAmount++;
+        int positArray[] = new int[positAmount];
+        int counterPositive = 0;
+        for(int num: arr)
+            if (num > 0)
+                positArray[counterPositive++] = num;
+        return positArray;
     }
 
     /**
@@ -92,6 +127,39 @@ public class ArrayTasks {
      * arr = [[5, 4], [7]]       -> [[7], [4, 5]]
      */
     public int[][] sortRaggedArray(int[][] arr) {
+
+        int[][] myArr = arr.clone();
+    /*
+        String arrStr="";
+        for(int i = 0; i < myArr.length; i++) {
+            for (int j = 0; j < myArr[i].length; j++)
+                arrStr+= myArr[i][j];
+            arrStr+=":\nbefore";
+        }
+        System.out.println(arrStr);
+     */
+
+        for(int i = 0; i < myArr.length-1; i++)
+            for(int j = 0; j < myArr.length -i -1; j++)
+            if (myArr[j].length > myArr[j+1].length){
+                int [] tmp = myArr[j+1];
+                myArr[j+1] = myArr[j];
+                myArr[j] = tmp;
+            }
+        /*
+        arrStr="";
+        for(int i = 0; i < myArr.length; i++) {
+            for (int j = 0; j < myArr[i].length; j++)
+                arrStr+= myArr[i][j];
+            arrStr+=":\nafter";
+        }
+        System.out.println(arrStr);
+
+         */
+        return myArr;
+
+
+
 
     }
 }
