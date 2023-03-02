@@ -108,7 +108,7 @@ public class ArrayTasks {
         for(int num: arr)
             if (num > 0)
                 positAmount++;
-        int positArray[] = new int[positAmount];
+        int[] positArray = new int[positAmount];
         int counterPositive = 0;
         for(int num: arr)
             if (num > 0)
@@ -129,33 +129,15 @@ public class ArrayTasks {
     public int[][] sortRaggedArray(int[][] arr) {
 
         int[][] myArr = arr.clone();
-    /*
-        String arrStr="";
-        for(int i = 0; i < myArr.length; i++) {
-            for (int j = 0; j < myArr[i].length; j++)
-                arrStr+= myArr[i][j];
-            arrStr+=":\nbefore";
-        }
-        System.out.println(arrStr);
-     */
 
         for(int i = 0; i < myArr.length-1; i++)
             for(int j = 0; j < myArr.length -i -1; j++)
-            if (myArr[j].length > myArr[j+1].length){
+             if (myArr[j].length > myArr[j+1].length){
                 int [] tmp = myArr[j+1];
                 myArr[j+1] = myArr[j];
                 myArr[j] = tmp;
             }
-        /*
-        arrStr="";
-        for(int i = 0; i < myArr.length; i++) {
-            for (int j = 0; j < myArr[i].length; j++)
-                arrStr+= myArr[i][j];
-            arrStr+=":\nafter";
-        }
-        System.out.println(arrStr);
 
-         */
         return myArr;
 
 
